@@ -10,7 +10,7 @@ const { exec, execSync } = require('child_process');
 
 // Get fully qualified domain name
 const privateIp = execSync('hostname -f').toString();
-
+console.log(privateIp)
 
 
 app.get('/', (req, res) => {
