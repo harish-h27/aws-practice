@@ -9,8 +9,8 @@ const PORT = process.env.PORT
 const { exec, execSync } = require('child_process');
 
 // Get fully qualified domain name
-const privateIp = execSync('hostname -f');
-console.log(privateIp.toString());
+const privateIp = execSync('hostname -f').toString();
+
 
 
 app.get('/', (req, res) => {
