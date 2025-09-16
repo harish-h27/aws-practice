@@ -6,7 +6,11 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT
+const { exec, execSync } = require('child_process');
 
+// Get fully qualified domain name
+const privateIp = execSync('hostname -f');
+console.log(privateIp.toString());
 
 
 app.get('/', (req, res) => {
@@ -15,6 +19,7 @@ app.get('/', (req, res) => {
         message: "Home Page",
         forward_ip: req.headers['x-forwarded-for'],
         ip: req.ip,
+        privateIp,
     })
 })
 
@@ -23,6 +28,7 @@ app.get('/users', (req, res) => {
         message: "Users Page",
         forward_ip: req.headers['x-forwarded-for'],
         ip: req.ip,
+        privateIp
     })
 })
 
@@ -32,6 +38,7 @@ app.get('/messages', (req, res) => {
         message: "Messages Page",
         forward_ip: req.headers['x-forwarded-for'],
         ip: req.ip,
+        privateIp
     })
 })
 
@@ -40,6 +47,7 @@ app.get('/xy', (req, res) => {
         message: "XY Page",
         forward_ip: req.headers['x-forwarded-for'],
         ip: req.ip,
+        privateIp
     })
 })
 
@@ -48,6 +56,7 @@ app.get('/ab', (req, res) => {
         message: "AB Page",
         forward_ip: req.headers['x-forwarded-for'],
         ip: req.ip,
+        privateIp
     })
 })
 
